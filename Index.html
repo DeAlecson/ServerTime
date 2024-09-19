@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date and Time</title>
+    <script>
+        function showDateTime() {
+            // Set the timezone to 'Asia/Singapore'
+            const now = new Date();
+            const options = { timeZone: 'Asia/Singapore' };
+
+            // Format date as MM/DD/YYYY
+            const date = now.toLocaleDateString('en-US', {
+                ...options,
+                month: '2-digit',
+                day: '2-digit',
+                year: 'numeric'
+            });
+
+            // Format time as HH:MM:SS
+            const time = now.toLocaleTimeString('en-US', {
+                ...options,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+
+            // Combine date and time with '^' in between
+            document.getElementById("date-time").textContent = `${date}^${time}`;
+        }
+    </script>
+</head>
+<body onload="showDateTime()">
+    <div id="date-time"></div>
+</body>
+</html>
