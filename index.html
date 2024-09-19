@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current Date and Time</title>
+    <title>Server Time</title>
     <script>
-        function showDateTime() {
-            // Set the timezone to 'Asia/Singapore'
+        // Function to return the current date and time in the desired format
+        function displayCurrentTime() {
             const now = new Date();
-            const options = { timeZone: 'Asia/Singapore' };
+            const options = { timeZone: 'Asia/Singapore' }; // Set desired timezone here
 
-            // Format date as MM/DD/YYYY
+            // Format date as MM/dd/yyyy
             const date = now.toLocaleDateString('en-US', {
                 ...options,
                 month: '2-digit',
                 day: '2-digit',
-                year: 'numeric'
+                year: 'numeric',
             });
 
-            // Format time as HH:MM:SS
+            // Format time as HH:mm:ss
             const time = now.toLocaleTimeString('en-US', {
                 ...options,
                 hour: '2-digit',
@@ -27,12 +27,19 @@
                 hour12: false
             });
 
-            // Combine date and time with '^' in between
-            document.getElementById("date-time").textContent = `${date}^${time}`;
+            // Combine date and time with caret (^) in between
+            const dateTimeString = `${date}^${time}`;
+
+            // Change document content type to plain text and output the time
+            document.open("text/plain"); // Change MIME type to plain text
+            document.write(dateTimeString);
+            document.close();
         }
+
+        // Call the function to display time when the page loads
+        window.onload = displayCurrentTime;
     </script>
 </head>
-<body onload="showDateTime()">
-    <div id="date-time"></div>
+<body>
 </body>
 </html>
