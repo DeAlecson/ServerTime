@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server Time</title>
     <script>
-        // Function to return the current date and time in the desired format
-        function displayCurrentTime() {
+        // Function to generate the current date and time in the desired format
+        function generateCurrentTime() {
             const now = new Date();
-            const options = { timeZone: 'Asia/Singapore' }; // Set desired timezone here
+            const options = { timeZone: 'Asia/Singapore' }; // Use the desired timezone here
 
-            // Format date as MM/dd/yyyy
+            // Format the date as MM/dd/yyyy
             const date = now.toLocaleDateString('en-US', {
                 ...options,
                 month: '2-digit',
                 day: '2-digit',
-                year: 'numeric',
+                year: 'numeric'
             });
 
-            // Format time as HH:mm:ss
+            // Format the time as HH:mm:ss
             const time = now.toLocaleTimeString('en-US', {
                 ...options,
                 hour: '2-digit',
@@ -27,19 +27,23 @@
                 hour12: false
             });
 
-            // Combine date and time with caret (^) in between
+            // Combine date and time with a caret (^) in between
             const dateTimeString = `${date}^${time}`;
 
-            // Change document content type to plain text and output the time
-            document.open("text/plain"); // Change MIME type to plain text
-            document.write(dateTimeString);
+            // Output the dateTimeString as plain text
+            document.open('text/plain'); // Set content type to text/plain
+            document.write(dateTimeString); // Write the plain text content
             document.close();
         }
 
-        // Call the function to display time when the page loads
-        window.onload = displayCurrentTime;
+        // Execute the function when the page loads
+        window.onload = generateCurrentTime;
     </script>
 </head>
 <body>
+    <!-- The body is left empty because we are directly manipulating the document content -->
+</body>
+</html>
+
 </body>
 </html>
